@@ -11,7 +11,10 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Best Reviewed and Recently Added Movies/Television Based on User's Streaming Subscriptions"
   spec.description   = <<-DESCRIPTION 
-  Provides Current Recommendations and Reviews from Vulture.com for Best Reviewed and Recently Added Movies/Television Depending on the Streaming Services a User Indicates They have Access to.
+  Provides Current Recommendations and Reviews from Vulture.com 
+  for Best Reviewed and Recently Added Movies/Television
+  Depending on the Streaming Services a User Indicates 
+  They have Access to.
   DESCRIPTION
   spec.homepage      = "https://github.com/NotoriousCottonball/what_to_watch"
   spec.license       = "MIT"
