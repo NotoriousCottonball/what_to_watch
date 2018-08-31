@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'George  Pianka'"]
   spec.email         = ["'gpianka1@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Best Reviewed and Recently Added Movies/Television Based on User's Streaming Subscriptions"
+  spec.description   = "Provides Current Recommendations and Reviews from Vulture.com for Best Reviewed and Recently Added Movies/Television Depending on the Streaming Services a User Indicates They have Access to."
+  spec.homepage      = "https://github.com/NotoriousCottonball/what_to_watch"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
