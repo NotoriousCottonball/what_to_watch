@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "what_to_watch"
+
+WhatToWatch::CLI.new.start
