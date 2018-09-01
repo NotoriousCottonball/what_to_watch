@@ -2,7 +2,7 @@ class WhatToWatch::CLI
   attr_accessor :input, :streaming_services
   
   def initialize 
-   @input = nil
+   @input = ""
    @streaming_services = {netflix: "n", amazon_prime: "n", hbo: "n", hulu: "n", showtime: "n"}
    puts "=======================================================================" 
    puts %q[
@@ -21,18 +21,19 @@ class WhatToWatch::CLI
    
   def start
     while !exit?
-      
       which_streaming_services
       main_commands
-    
+      while !exit?
       case @input
       when "1"
         WhatToWatch::BestMovies.add_shows
         WhatToWatch::BestMovies.list
         options
+        while !exit?
         if valid_number?(WhatToWatch::BestMovies.all)
           WhatToWatch::BestMovies.print_item(@input)
           item_options
+          while !exit?
           if @input == "y"
             options
           elsif @input == "n"
@@ -40,16 +41,20 @@ class WhatToWatch::CLI
           else 
             invalid_command
           end
+          end
         else
            invalid_command
+        end
         end
       when "2"
         WhatToWatch::BestTV.add_shows
         WhatToWatch::BestTV.list
         options
+        while !exit?
         if valid_number?(WhatToWatch::BestTV.all)
           WhatToWatch::BestTV.print_item(@input)
           item_options
+          while !exit?
           if @input == "y"
             options
           elsif @input == "n"
@@ -57,16 +62,20 @@ class WhatToWatch::CLI
           else 
             invalid_command
           end
+          end
         else
            invalid_command
+        end
         end
       when "3"
         WhatToWatch::RecentlyAdded.add_shows
         WhatToWatch::RecentlyAdded.list
         options
+        while !exit?
         if valid_number?(WhatToWatch::RecentlyAdded.all)
           WhatToWatch::RecentlyAdded.print_item(@input)
           item_options
+          while !exit?
           if @input == "y"
             options
           elsif @input == "n"
@@ -74,11 +83,14 @@ class WhatToWatch::CLI
           else 
             invalid_command
           end
+          end
         else
            invalid_command
         end
+        end
       else
         invalid_command
+      end
       end
     end
     exit
@@ -91,11 +103,11 @@ class WhatToWatch::CLI
     puts "-------"
     puts "OPTIONS:"
     puts "-------"
-    puts "1. Enter 1 to see the Best-Reviewed Movies you can stream now."
-    puts "2. Enter 2 to see the Best-Reviewed Television you can stream now."
+    puts "1. Enter 1 to see the Best-Reviewed MOVIES you can stream now."
+    puts "2. Enter 2 to see the Best-Reviewed TELEVISION you can stream now."
     puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
     puts ""
-    puts "exit: exit"
+    puts "Exit. Enter exit"
     @input = gets.strip
   end
   
@@ -106,17 +118,19 @@ class WhatToWatch::CLI
     puts "-------"
     puts "Enter The Number of the Selection to See Details and Information."
     puts ""
-    puts "exit: exit"
+    puts "Exit. Enter exit"
     @input = gets.strip
   end
   
   def item_options
+    puts ""
     puts "-------"
     puts "OPTIONS"
     puts "-------"
     puts "Enter y to See Info/Details for Another Selection"
     puts "Enter n to Start Over"
-    puts "exit: exit"
+    puts ""
+    puts "Exit. Enter exit"
     @input = gets.strip.downcase
   end
   
@@ -139,52 +153,72 @@ class WhatToWatch::CLI
     
     puts "1. Do You have Netflix?"
     @input = gets.strip.downcase
+    while !exit?
     if @input == "y"
       @streaming_services[:netflix] = "y"
+      break
     elsif @input == "n"
-       @streaming_services[:netflix] = "n"
+      @streaming_services[:netflix] = "n"
+      break
     else 
        invalid_command
+    end
     end
     
     puts "2. Do You have Amazon Prime?"
     @input = gets.strip.downcase
+    while !exit?
     if @input == "y"
       @streaming_services[:amazon_prime] = "y"
+      break
     elsif @input == "n"
-       @streaming_services[:amazon_prime] = "n"
+      @streaming_services[:amazon_prime] = "n"
+      break
     else 
        invalid_command
+    end
     end
     
     puts "3. Do You have HBO?"
     @input = gets.strip.downcase
+    while !exit?
     if @input == "y"
       @streaming_services[:hbo] = "y"
+      break
     elsif @input == "n"
-       @streaming_services[:hbo] = "n"
+      @streaming_services[:hbo] = "n"
+      break
     else 
        invalid_command
+    end
     end
     
     puts "4. Do You have HULU?"
     @input = gets.strip.downcase
+    while !exit?
     if @input == "y"
       @streaming_services[:hulu] = "y"
+      break
     elsif @input == "n"
-       @streaming_services[:hulu] = "n"
+      @streaming_services[:hulu] = "n"
+      break
     else 
        invalid_command
+    end
     end
     
     puts "5. Do You have Showtime?"
     @input = gets.strip.downcase
+    while !exit?
     if @input == "y"
       @streaming_services[:showtime] = "y"
+      break
     elsif @input == "n"
-       @streaming_services[:showtime] = "n"
+      @streaming_services[:showtime] = "n"
+      break
     else 
        invalid_command
+    end
     end
   end
   
