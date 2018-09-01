@@ -9,7 +9,14 @@ class WhatToWatch::BestMovies
     @@all 
   end
   
-  def self.add_shows(hash)
+  def self.selector
+    
+  end
+  
+  def self.add_shows
+  end
+  
+  def self.list(hash)
     hash.collect{|service, value| service.to_s if value == "y"}
     .compact.each do |service|
       case service
@@ -18,8 +25,8 @@ class WhatToWatch::BestMovies
       when "hbo"
       when "hulu"
       when "showtime"
-     end
-   end
+      end
+    end
   end
   
   
