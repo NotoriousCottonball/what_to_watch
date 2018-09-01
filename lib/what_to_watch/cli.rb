@@ -21,33 +21,34 @@ class WhatToWatch::CLI
    
   def start
     while !exit?
-    which_streaming_services
-    main_commands
+      
+      which_streaming_services
+      main_commands
     
-    case @input
-    when "1" 
-      options
-    when "2"
-    when "3"
-    else
-      invalid_command
+      case @input
+      when "1"
+        WhatToWatch::BestMovies.add_shows
+        WhatToWatch::BestMovies.list
+        options
+        if valid_number?(WhatToWatch::BestMovies.all)
+          WhatToWatch::BestMovies.print_item(@input)
+          options
+        else
+           invalid_command
+      when "2"
+      when "3"
+      else
+        invalid_command
+      end
     end
+    exit
   end
     
     
     
-    
-    
-    
-    
-    self.streaming_services.each {|service, answer| if answer == "y"}
-    
-    
-    
-    
-    if @input == ""
-  end
-end 
+   # self.streaming_services.each {|service, answer| if answer == "y"}
+  
+
   
   
   #CLI Dialogue Methods
@@ -142,6 +143,7 @@ end
     else 
        invalid_command
     end
+  end
   
   #CLI Logic Methods
   
