@@ -7,7 +7,7 @@ require "pry"
 
 
 def reload!
-  load "./lib/what_to_watch/scraper.rb"
+  load "./lib/what_to_watch/cli.rb"
 end
 
 
