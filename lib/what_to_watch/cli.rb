@@ -22,9 +22,25 @@ class WhatToWatch::CLI
   def start
     while !exit?
     which_streaming_services
-    
     main_commands
+    
+    case @input
+    when "1" 
+    when "2"
+    when "3"
+    else
+      invalid_command
     end
+    
+    options
+    
+    
+    
+    self.streaming_services.each {|service, answer| if answer == "y"}
+    
+    
+    
+    
     if @input == ""
   end
 end 
@@ -89,10 +105,20 @@ end
   end
   
   def main_commands
-    
+    puts ""
+    puts "-------"
+    puts "OPTIONS:"
+    puts "-------"
+    puts "1. Enter 1 to see the Best-Reviewed Movies you can stream now."
+    puts "2. Enter 2 to see the Best-Reviewed Television you can stream now."
+    puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
+    puts ""
+    puts "exit: exit"
+    @input = gets.strip
   end
   
   def options
+    
   end
   
   def invalid_command
