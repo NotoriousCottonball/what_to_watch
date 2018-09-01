@@ -26,13 +26,17 @@ class WhatToWatch::CLI
     
     case @input
     when "1" 
+      options
     when "2"
     when "3"
     else
       invalid_command
     end
+  end
     
-    options
+    
+    
+    
     
     
     
@@ -47,6 +51,43 @@ end
   
   
   #CLI Dialogue Methods
+  
+  def main_commands
+    puts ""
+    puts "-------"
+    puts "OPTIONS:"
+    puts "-------"
+    puts "1. Enter 1 to see the Best-Reviewed Movies you can stream now."
+    puts "2. Enter 2 to see the Best-Reviewed Television you can stream now."
+    puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
+    puts ""
+    puts "exit: exit"
+    @input = gets.strip
+  end
+  
+  def options
+    puts ""
+    puts "-------"
+    puts "OPTIONS:"
+    puts "-------"
+    puts "Enter The Number of the Selection to See Details and Information."
+    puts ""
+    puts "exit: exit"
+    @input = gets.strip
+  end
+  
+  def invalid_command
+    puts ""
+    puts "I'm sorry, I don't recognize that Command."
+    puts "Please Try Again"
+    puts ""
+    @input = gets.strip.downcase
+  end
+  
+  def exit 
+    puts "See You Next Time for More Great Movie/TV Recommendations!"
+  end
+  
   def which_streaming_services
     puts "Which Streaming Services do You Have Access To?"
     puts ""
@@ -101,39 +142,9 @@ end
     else 
        invalid_command
     end
-    @streaming_services
-  end
-  
-  def main_commands
-    puts ""
-    puts "-------"
-    puts "OPTIONS:"
-    puts "-------"
-    puts "1. Enter 1 to see the Best-Reviewed Movies you can stream now."
-    puts "2. Enter 2 to see the Best-Reviewed Television you can stream now."
-    puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
-    puts ""
-    puts "exit: exit"
-    @input = gets.strip
-  end
-  
-  def options
-    
-  end
-  
-  def invalid_command
-    puts ""
-    puts "I'm sorry, I don't recognize that Command."
-    puts "Please Try Again"
-    puts ""
-    @input = gets.strip.downcase
-  end
-  
-  def exit 
-    puts "See You Next Time for More Great Movie/TV Recommendations!"
-  end
   
   #CLI Logic Methods
+  
   def exit?
     @input.downcase == "exit"
   end
