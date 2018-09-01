@@ -24,7 +24,10 @@ class WhatToWatch::CLI
   
   
   #CLI Dialogue Methods
-  def menu 
+  def which_streaming_services
+  end
+  
+  def main_menu 
   end
   
   def options
