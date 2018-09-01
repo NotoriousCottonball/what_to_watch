@@ -58,7 +58,7 @@ class WhatToWatch::CLI
         end
       when "2"
         WhatToWatch::BestTV.add_shows
-        WhatToWatch::BestTV.list
+        WhatToWatch::BestTV.list(@streaming_services)
         options
         while !exit?
         if valid_number?(WhatToWatch::BestTV.all)
@@ -80,7 +80,7 @@ class WhatToWatch::CLI
         end
       when "3"
         WhatToWatch::RecentlyAdded.add_shows
-        WhatToWatch::RecentlyAdded.list
+        WhatToWatch::RecentlyAdded.list(@streaming_services)
         options
         while !exit?
         if valid_number?(WhatToWatch::RecentlyAdded.all)
