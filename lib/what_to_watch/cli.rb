@@ -26,11 +26,12 @@ class WhatToWatch::CLI
       while !exit?
       case @input
       when "1"
-        print ["a", "b", "c"]
+        WhatToWatch::BestMovies.add_shows
+        WhatToWatch::BestMovies.list
         options
         while !exit?
-        if valid_number?(["a", "b", "c"])
-          print ["a", "b", "c"][@input.to_i-1]
+        if valid_number?(WhatToWatch::BestMovies.all)
+          WhatToWatch::BestMovies.print_item(@input)
           item_options
           while !exit?
           if @input == "y"
@@ -47,11 +48,12 @@ class WhatToWatch::CLI
         end
         end
       when "2"
-        print ["a", "b", "c"]
+        WhatToWatch::BestTV.add_shows
+        WhatToWatch::BestTV.list
         options
         while !exit?
-        if valid_number?(["a", "b", "c"])
-          print ["a", "b", "c"][@input.to_i-1]
+        if valid_number?(WhatToWatch::BestTV.all)
+          WhatToWatch::BestTV.print_item(@input)
           item_options
           while !exit?
           if @input == "y"
@@ -68,11 +70,12 @@ class WhatToWatch::CLI
         end
         end
       when "3"
-        print ["a", "b", "c"]
+        WhatToWatch::RecentlyAdded.add_shows
+        WhatToWatch::RecentlyAdded.list
         options
         while !exit?
-        if valid_number?(["a", "b", "c"])
-          print ["a", "b", "c"][@input.to_i-1]
+        if valid_number?(WhatToWatch::RecentlyAdded.all)
+          WhatToWatch::RecentlyAdded.print_item(@input)
           item_options
           while !exit?
           if @input == "y"
