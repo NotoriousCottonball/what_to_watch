@@ -32,11 +32,51 @@ class WhatToWatch::CLI
         options
         if valid_number?(WhatToWatch::BestMovies.all)
           WhatToWatch::BestMovies.print_item(@input)
-          options
+          item_options
+          if @input == "y"
+            options
+          elsif @input == "n"
+            start
+          else 
+            invalid_command
+          end
         else
            invalid_command
+        end
       when "2"
+        WhatToWatch::BestTV.add_shows
+        WhatToWatch::BestTV.list
+        options
+        if valid_number?(WhatToWatch::BestTV.all)
+          WhatToWatch::BestTV.print_item(@input)
+          item_options
+          if @input == "y"
+            options
+          elsif @input == "n"
+            start
+          else 
+            invalid_command
+          end
+        else
+           invalid_command
+        end
       when "3"
+        WhatToWatch::RecentlyAdded.add_shows
+        WhatToWatch::RecentlyAdded.list
+        options
+        if valid_number?(WhatToWatch::RecentlyAdded.all)
+          WhatToWatch::RecentlyAdded.print_item(@input)
+          item_options
+          if @input == "y"
+            options
+          elsif @input == "n"
+            start
+          else 
+            invalid_command
+          end
+        else
+           invalid_command
+        end
       else
         invalid_command
       end
@@ -44,13 +84,6 @@ class WhatToWatch::CLI
     exit
   end
     
-    
-    
-   # self.streaming_services.each {|service, answer| if answer == "y"}
-  
-
-  
-  
   #CLI Dialogue Methods
   
   def main_commands
@@ -75,6 +108,16 @@ class WhatToWatch::CLI
     puts ""
     puts "exit: exit"
     @input = gets.strip
+  end
+  
+  def item_options
+    puts "-------"
+    puts "OPTIONS"
+    puts "-------"
+    puts "Enter y to See Info/Details for Another Selection"
+    puts "Enter n to Start Over"
+    puts "exit: exit"
+    @input = gets.strip.downcase
   end
   
   def invalid_command
