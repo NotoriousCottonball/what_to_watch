@@ -20,22 +20,22 @@ class WhatToWatch::CLI
   end 
    
   def start
+    which_streaming_services
     while !exit?
-      which_streaming_services
       main_commands
       while !exit?
       case @input
       when "1"
-        WhatToWatch::BestMovies.add_shows
-        WhatToWatch::BestMovies.list
+        print ["a", "b", "c"]
         options
         while !exit?
-        if valid_number?(WhatToWatch::BestMovies.all)
-          WhatToWatch::BestMovies.print_item(@input)
+        if valid_number?(["a", "b", "c"])
+          print ["a", "b", "c"][@input.to_i-1]
           item_options
           while !exit?
           if @input == "y"
             options
+            break
           elsif @input == "n"
             start
           else 
@@ -47,16 +47,16 @@ class WhatToWatch::CLI
         end
         end
       when "2"
-        WhatToWatch::BestTV.add_shows
-        WhatToWatch::BestTV.list
+        print ["a", "b", "c"]
         options
         while !exit?
-        if valid_number?(WhatToWatch::BestTV.all)
-          WhatToWatch::BestTV.print_item(@input)
+        if valid_number?(["a", "b", "c"])
+          print ["a", "b", "c"][@input.to_i-1]
           item_options
           while !exit?
           if @input == "y"
             options
+            break
           elsif @input == "n"
             start
           else 
@@ -68,16 +68,16 @@ class WhatToWatch::CLI
         end
         end
       when "3"
-        WhatToWatch::RecentlyAdded.add_shows
-        WhatToWatch::RecentlyAdded.list
+        print ["a", "b", "c"]
         options
         while !exit?
-        if valid_number?(WhatToWatch::RecentlyAdded.all)
-          WhatToWatch::RecentlyAdded.print_item(@input)
+        if valid_number?(["a", "b", "c"])
+          print ["a", "b", "c"][@input.to_i-1]
           item_options
           while !exit?
           if @input == "y"
             options
+            break
           elsif @input == "n"
             start
           else 
@@ -107,7 +107,9 @@ class WhatToWatch::CLI
     puts "2. Enter 2 to see the Best-Reviewed TELEVISION you can stream now."
     puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
     puts ""
-    puts "Exit. Enter exit"
+    puts "Exit: Type exit"
+    puts "---------------"
+    puts ""
     @input = gets.strip
   end
   
@@ -118,7 +120,9 @@ class WhatToWatch::CLI
     puts "-------"
     puts "Enter The Number of the Selection to See Details and Information."
     puts ""
-    puts "Exit. Enter exit"
+    puts "Exit: Type exit"
+    puts "---------------"
+    puts ""
     @input = gets.strip
   end
   
@@ -130,7 +134,9 @@ class WhatToWatch::CLI
     puts "Enter y to See Info/Details for Another Selection"
     puts "Enter n to Start Over"
     puts ""
-    puts "Exit. Enter exit"
+    puts "Exit: Type exit"
+    puts "---------------"
+    puts ""
     @input = gets.strip.downcase
   end
   
