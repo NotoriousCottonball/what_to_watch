@@ -7,6 +7,7 @@ require "pry"
 
 
 def reload!
+  load "./lib/what_to_watch.rb"
   load "./lib/what_to_watch/cli.rb"
   load "./lib/what_to_watch/best_movies.rb"
   load "./lib/what_to_watch/recently_added.rb"

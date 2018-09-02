@@ -18,7 +18,7 @@ class WhatToWatch::Scraper
   
   def self.get_item_page(object) 
     search_results_page = Nokogiri::HTML(open("https://www.imdb.com/find?s=tt&q=" + CGI::escape(object.title)))
-    
+  end
   
   
   def self.scrape_imdb(object)

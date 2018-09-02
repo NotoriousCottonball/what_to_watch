@@ -1,5 +1,5 @@
 class WhatToWatch::Show
-attr_accessor :title, :streaming_service, :
+attr_accessor :title, :streaming_service 
   
   # WhatToWatch::BestMovies.add_shows
   # WhatToWatch::BestMovies.list()
