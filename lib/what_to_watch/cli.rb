@@ -31,6 +31,7 @@ class WhatToWatch::CLI
   def start
     which_streaming_services
     while !exit?
+      WhatToWatch::Scraper.scrape_vulture
       main_commands
       while !exit?
       case @input
