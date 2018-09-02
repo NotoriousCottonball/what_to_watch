@@ -13,14 +13,18 @@ class WhatToWatch::Scraper
       end 
     end
   end
-       
-       
+  
+  #Scrape Search Page on imdb.com to determine the Item Page
+  
+  def self.get_item_page(object) 
+    search_results_page = Nokogiri::HTML(open("https://www.imdb.com/find?s=tt&q=" + CGI::escape(object.title)))
     
+  
+  
+  def self.scrape_imdb(object)
+    self.get_item_page(object)
+  end
 
-  
-  
-  
-  
   
   
 end

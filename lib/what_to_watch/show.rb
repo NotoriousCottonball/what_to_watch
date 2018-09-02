@@ -1,9 +1,9 @@
 class WhatToWatch::Show
-attr_accessor :title, :streaming_service
+attr_accessor :title, :streaming_service, :
   
   # WhatToWatch::BestMovies.add_shows
   # WhatToWatch::BestMovies.list()
-  # {netflix: "n", amazon_prime: "y", hbo_now: "y", hulu: "n", showtime: "y"}
+  # {netflix: "y", amazon_prime: "n", hbo_now: "y", hulu: "n", showtime: "y"}
   
   def initialize(title="", streaming_service="")
     @title = title 
@@ -14,6 +14,8 @@ attr_accessor :title, :streaming_service
   def self.add_shows
     WhatToWatch::Scraper.scrape_vulture(self)
   end
+  
+  #Determine Display Based On User Input Recorded in CLI.streaming_services
   
   def self.services(hash)
     services = hash.collect do |service, value| 
@@ -41,6 +43,13 @@ attr_accessor :title, :streaming_service
         puts ""
       end
     end
+  end
+  
+  
+  def self.print_item(input)
+    object = self.all[input.to_i-1]
+    WhatToWatch::Scraper.scrape_imdb(object)
+    
   end
   
 end
