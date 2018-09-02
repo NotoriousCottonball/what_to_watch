@@ -28,13 +28,30 @@ class WhatToWatch::BestMovies
   
   
   
- # self.all.select{|object| object.streaming_service ==
+
   
   def self.list(hash)
-    services = hash.collect{|service, value| service.to_s if value == "y"}.compact
-    self.all.select{|object| services.include?(object.streaming_service)}
-    .each.with_index(1) do |object, index|
-      puts "#{index}. "
+    services = hash.collect do |service, value| 
+      if value == "y" 
+        service.to_s.split('_').map(&:capitalize).join(' ').compact
+      end
+    end
+    
+    if services.include?("Hbo Now")
+      services << "HBO Now"
+    end
+    
+    self.all.each.with_index(1) do |object, index|
+      if services.include?(object.streaming_service)
+        puts ""
+        puts "#{index}. #{object.title}. Available Now on #{object.streaming_service}."
+        puts ""
+      else
+        puts ""
+        puts "#{index}. #{object.title}. Sorry. You Don't Have #{object.streaming_service}."
+        puts ""
+      end
+    end
   end
   
   
