@@ -1,12 +1,14 @@
 class WhatToWatch::BestMovies
   
   
-  
-  
   @@all = []
   
   def self.all 
     @@all 
+  end
+  
+  def self.rows
+    [10, 11]
   end
   
   def self.add_shows
