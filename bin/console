@@ -8,6 +8,11 @@ require "pry"
 
 def reload!
   load "./lib/what_to_watch/cli.rb"
+  load "./lib/what_to_watch/best_movies.rb"
+  load "./lib/what_to_watch/recently_added.rb"
+  load "./lib/what_to_watch/best_tv.rb"
+  load "./lib/what_to_watch/scraper.rb"
+  load "./lib/what_to_watch/show.rb"
 end
 
 

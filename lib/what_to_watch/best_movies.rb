@@ -1,7 +1,14 @@
 class WhatToWatch::BestMovies
+  attr_accessor :title, :streaming_service
   
   
   @@all = []
+  
+  def initialize(title="", streaming_service="")
+    @title = title 
+    @streaming_service = streaming_service
+    @@all << self
+  end
   
   def self.all 
     @@all 
@@ -12,7 +19,10 @@ class WhatToWatch::BestMovies
   end
   
   def self.add_shows
+    WhatToWatch::Scraper.scrape_vulture(self)
   end
+  
+  
   
   def self.list(hash)
     hash.collect{|service, value| service.to_s if value == "y"}
