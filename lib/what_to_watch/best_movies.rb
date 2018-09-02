@@ -9,10 +9,6 @@ class WhatToWatch::BestMovies
     @@all 
   end
   
-  def self.selector
-    
-  end
-  
   def self.add_shows
   end
   

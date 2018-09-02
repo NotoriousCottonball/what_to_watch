@@ -3,7 +3,7 @@ class WhatToWatch::Scraper
  
  def self.scrape_vulture(selector)
     doc = Nokogiri::HTML(open("http://vulture.com/streaming"))
-    doc.css(selector).each do |service|
+    doc.css("div.what-to-watch").first     
     end
  end
  
