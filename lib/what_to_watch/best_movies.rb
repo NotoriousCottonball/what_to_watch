@@ -14,6 +14,10 @@ class WhatToWatch::BestMovies
     @@all 
   end
   
+  def self.reset! 
+    @@all = []
+  end
+  
   def self.rows
     [10, 11]
   end

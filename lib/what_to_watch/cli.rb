@@ -47,6 +47,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
+            WhatToWatch::BestMovies.reset!
             start
           else 
             invalid_command
@@ -69,6 +70,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
+            WhatToWatch::BestTV.reset!
             start
           else 
             invalid_command
@@ -91,6 +93,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
+            WhatToWatch::RecentlyAdded.reset!
             start
           else 
             invalid_command

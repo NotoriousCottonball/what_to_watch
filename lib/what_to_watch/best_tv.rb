@@ -15,6 +15,10 @@ class WhatToWatch::BestTV
     @@all 
   end
   
+  def self.reset! 
+    @@all = []
+  end
+  
   def self.rows
     [7, 8, 9]
   end
