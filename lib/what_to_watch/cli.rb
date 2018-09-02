@@ -3,7 +3,7 @@ class WhatToWatch::CLI
   
   def initialize 
    @input = ""
-   @streaming_services = {netflix: "n", amazon_prime: "n", hbo: "n", hulu: "n", showtime: "n"}
+   @streaming_services = {netflix: "n", amazon_prime: "n", hbo_go: "n", hulu: "n", showtime: "n"}
    puts "=======================================================================" 
    puts %q[
  
@@ -204,10 +204,10 @@ class WhatToWatch::CLI
     @input = gets.strip.downcase
     while !exit?
     if @input == "y"
-      @streaming_services[:hbo] = "y"
+      @streaming_services[:hbo_go] = "y"
       break
     elsif @input == "n"
-      @streaming_services[:hbo] = "n"
+      @streaming_services[:hbo_go] = "n"
       break
     else 
        invalid_command

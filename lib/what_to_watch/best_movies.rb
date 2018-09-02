@@ -28,17 +28,13 @@ class WhatToWatch::BestMovies
   
   
   
+ # self.all.select{|object| object.streaming_service ==
+  
   def self.list(hash)
-    hash.collect{|service, value| service.to_s if value == "y"}
-    .compact.each do |service|
-      case service
-      when "netflix"
-      when "amazon_prime"
-      when "hbo"
-      when "hulu"
-      when "showtime"
-      end
-    end
+    services = hash.collect{|service, value| service.to_s if value == "y"}.compact
+    self.all.select{|object| services.include?(object.streaming_service)}
+    .each.with_index(1) do |object, index|
+      puts "#{index}. "
   end
   
   
