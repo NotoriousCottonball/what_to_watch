@@ -14,6 +14,14 @@ class WhatToWatch::BestMovies < WhatToWatch::Show
     [10, 11]
   end
   
+  def self.list(hash)
+    puts ""
+    puts "======================"
+    puts " Best Reviewed Movies "
+    puts "======================"
+    puts ""
+    self.print_list(hash)
+  end
 end
     
         

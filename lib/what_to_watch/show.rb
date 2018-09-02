@@ -15,21 +15,23 @@ attr_accessor :title, :streaming_service
     WhatToWatch::Scraper.scrape_vulture(self)
   end
   
-  
-  def self.list(hash)
+  def self.services(hash)
     services = hash.collect do |service, value| 
       if value == "y" 
         service.to_s.split('_').map(&:capitalize).join(' ')
       end
     end
     services.compact!
-    
     if services.include?("Hbo Now")
       services << "HBO Now"
     end
-   
+    services
+  end
+    
+  
+  def self.print_list(hash)
     self.all.each.with_index(1) do |object, index|
-      if services.include?(object.streaming_service)
+      if self.services(hash).include?(object.streaming_service)
         puts ""
         puts "Available! #{index}. #{object.title.upcase}. Watch Now on #{object.streaming_service}."
         puts ""

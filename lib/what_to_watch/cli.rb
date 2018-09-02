@@ -120,7 +120,7 @@ class WhatToWatch::CLI
     puts "-------"
     puts "1. Enter 1 to see the Best-Reviewed MOVIES you can stream now."
     puts "2. Enter 2 to see the Best-Reviewed TELEVISION you can stream now."
-    puts "3. Enter 3 to see Recently-Added Movies/Television you can stream now."
+    puts "3. Enter 3 to see Recently-Added MOVIES/TELEVISION you can stream now."
     puts ""
     puts "Exit: Type exit"
     puts "---------------"
