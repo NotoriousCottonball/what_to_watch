@@ -39,7 +39,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
         puts ""
       else
         puts ""
-        puts "Sorry..... #{index}. #{object.title.upcase} only on #{object.streaming_service}."
+        puts "Sorry..... #{index}. #{object.title.upcase}. Only on #{object.streaming_service}."
         puts ""
       end
     end
@@ -50,21 +50,22 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
     object = self.all[input.to_i-1]
     WhatToWatch::Scraper.scrape_imdb(object)
     puts ""
-    puts "===============#{object.title.upcase}==============="
+    puts "===================================="
+    puts "     #{object.title.upcase}"
+    puts "===================================="
+    puts "#{object.genre_year}"
     puts ""
-    puts "   #{object.genre_year}   "
+    puts "*** Available on #{object.streaming_service} ***"
     puts ""
-    puts "Available on #{object.streaming_service}"
+    object.cast.each{|role, people| puts "#{role} #{people}"}
     puts ""
-    object.cast.each{|role, people| puts "#{role} #{people}"
-    puts ""
-    puts "--------------------Description--------------------"
+    puts "---Description---"
     puts ""
     puts "#{object.description}"
+    puts "[...]"
     puts ""
-    puts "...................."
-    puts "For More Information"
-    puts "Please Visit The IMDB Page"
+    puts "For more information"
+    puts ""
     puts "===>  #{object.url}"
   end
   
