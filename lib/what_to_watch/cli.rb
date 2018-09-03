@@ -26,10 +26,10 @@ class WhatToWatch::CLI
    puts ""
    puts "Welcome to What To Watch!"
    puts ""
+   which_streaming_services
   end 
    
   def start
-    which_streaming_services
     while !exit?
       main_commands
       while !exit?
@@ -115,9 +115,9 @@ class WhatToWatch::CLI
   
   def main_commands
     puts ""
-    puts "-------"
-    puts "OPTIONS:"
-    puts "-------"
+    puts "---------"
+    puts "MAIN MENU:"
+    puts "---------"
     puts "1. Enter 1 to see the Best-Reviewed MOVIES you can stream now."
     puts "2. Enter 2 to see the Best-Reviewed TELEVISION you can stream now."
     puts "3. Enter 3 to see Recently-Added MOVIES/TELEVISION you can stream now."
@@ -146,8 +146,8 @@ class WhatToWatch::CLI
     puts "-------"
     puts "OPTIONS"
     puts "-------"
-    puts "Enter y to See Info/Details for Another Selection"
-    puts "Enter n to Start Over"
+    puts "Enter y to Get Info/Details for Another Selection"
+    puts "Enter n to Go Back to MAIN MENU"
     puts ""
     puts "Exit: Type exit"
     puts "---------------"
@@ -168,6 +168,7 @@ class WhatToWatch::CLI
   end
   
   def which_streaming_services
+    puts ""
     puts "Which Streaming Services do You Have Access To?"
     puts ""
     puts "Please Enter y or n to Answer each Question:"
