@@ -49,8 +49,23 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   def self.print_item(input)
     object = self.all[input.to_i-1]
     WhatToWatch::Scraper.scrape_imdb(object)
-    self.all
-    
+    puts ""
+    puts "===============#{object.title.upcase}==============="
+    puts ""
+    puts "   #{object.genre_year}   "
+    puts ""
+    puts "Available on #{object.streaming_service}"
+    puts ""
+    object.cast.each{|role, people| puts "#{role} #{people}"
+    puts ""
+    puts "--------------------Description--------------------"
+    puts ""
+    puts "#{object.description}"
+    puts ""
+    puts "...................."
+    puts "For More Information"
+    puts "Please Visit The IMDB Page"
+    puts "===>  #{object.url}"
   end
   
 end
