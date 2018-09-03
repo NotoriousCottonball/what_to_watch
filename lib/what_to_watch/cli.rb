@@ -159,7 +159,10 @@ class WhatToWatch::CLI
   end
   
   def exit 
+    puts ""
+    puts "**********************************************************"
     puts "See You Next Time for More Great Movie/TV Recommendations!"
+    puts "**********************************************************"
   end
   
   def which_streaming_services
