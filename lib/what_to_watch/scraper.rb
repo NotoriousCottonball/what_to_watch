@@ -34,10 +34,7 @@ class WhatToWatch::Scraper
     item_page.css("div.credit_summary_item").each do |category|
       object.cast[category.css("h4").text.strip] = category.css("a").collect{|tag|tag.text.strip}.
       join(", ").gsub(", See full cast & crew", "")
-end
-    
+    end
   end
-
-  
   
 end

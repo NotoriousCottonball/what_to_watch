@@ -1,5 +1,5 @@
 class WhatToWatch::Show
-attr_accessor :title, :streaming_service, :description 
+attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   
   # WhatToWatch::BestMovies.add_shows
   # WhatToWatch::BestMovies.list()
@@ -49,6 +49,7 @@ attr_accessor :title, :streaming_service, :description
   def self.print_item(input)
     object = self.all[input.to_i-1]
     WhatToWatch::Scraper.scrape_imdb(object)
+    self.all
     
   end
   
