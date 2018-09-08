@@ -4,11 +4,13 @@ class WhatToWatch::Scraper
  def self.scrape_vulture(model)
     doc = Nokogiri::HTML(open("http://vulture.com/streaming"))
     block = doc.css("div[data-editable='main']")[model.section]
-    block.css("section").drop(0).each do |item|
-      model.new(
-        item.css("div[itemprop='caption'] a").text.strip.gsub("  ", " ")
-        block.css("section")[0].css("h3").text.strip
+    block.css("div.column-item").each do |row|
+      row.css("section").drop(1).each do |item|
+        model.new(
+          item.css("div[itemprop='caption']").text.split("\n")[1].strip.gsub("  ", " "),
+          row.css("section")[0].css("h3").text.strip
         )
+      end
     end 
   end
   
