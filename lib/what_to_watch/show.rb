@@ -20,14 +20,10 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   def self.services(hash)
     services = hash.collect do |service, value| 
       if value == "y" 
-        service.to_s.split('_').map(&:capitalize).join(' ')
+        service.to_s.split('_').join(' ').capitalize
       end
     end
     services.compact!
-    if services.include?("Hbo Now")
-      services << "HBO Now"
-    end
-    services
   end
     
   

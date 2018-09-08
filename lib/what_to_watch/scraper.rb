@@ -8,7 +8,7 @@ class WhatToWatch::Scraper
       row.css("section").drop(1).each do |item|
         model.new(
           item.css("div[itemprop='caption']").text.split("\n")[1].strip.gsub("  ", " "),
-          row.css("section")[0].css("h3").text.strip
+          row.css("section")[0].css("h3").text.strip.capitalize
         )
       end
     end 
