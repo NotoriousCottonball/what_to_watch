@@ -51,7 +51,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
     puts "===================================="
     puts "#{object.genre_year}"
     puts ""
-    puts "*** Available on #{object.streaming_service} ***"
+    puts "*** Available on #{object.streaming_service.upcase} ***"
     puts ""
     object.cast.each{|role, people| puts "#{role} #{people}"}
     puts ""
