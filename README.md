@@ -7,20 +7,18 @@ The Gem returns a filtered list of recommendatons from Vulture.com and then furt
 
 ## Installation
 
-Add this line to your application's Gemfile:
+###Add this line to your application's Gemfile:
 
 ```
 gem 'what_to_watch'
 ```
 
-And then execute:
+###And then execute:
 
     $ bundle
-
-
-    $ gem install what_to_watch
     
-Or install it yourself as:
+
+###Or install it yourself as:
 
     $ gem install what_to_watch
 
