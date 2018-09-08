@@ -3,15 +3,13 @@ class WhatToWatch::Scraper
  
  def self.scrape_vulture(model)
     doc = Nokogiri::HTML(open("http://vulture.com/streaming"))
-    model.rows.each do |row|
-      block = doc.css("div.what-to-watch.row-#{row}")
-      block.css("ul.row li").each do |item|
-        model.new(
-         item.css("a.title").attr("title").text.strip,
-         block.css("h4").text.strip
+    block = doc.css("div[data-editable='main']")[model.section]
+    block.css("section").drop(0).each do |item|
+      model.new(
+        item.css("div[itemprop='caption'] a").text.strip.gsub("  ", " ")
+        block.css("section")[0].css("h3").text.strip
         )
-      end 
-    end
+    end 
   end
   
   #Scrape Search Page on imdb.com to determine the Item Page URL

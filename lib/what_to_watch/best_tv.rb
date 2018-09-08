@@ -10,8 +10,8 @@ class WhatToWatch::BestTV < WhatToWatch::Show
     @@all = []
   end
   
-  def self.rows
-    [7, 8, 9]
+  def self.section
+    2
   end
   
   def self.list(hash)

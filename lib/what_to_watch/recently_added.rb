@@ -10,8 +10,8 @@ class WhatToWatch::RecentlyAdded < WhatToWatch::Show
     @@all = []
   end
   
-  def self.rows
-    [1, 2, 3, 4, 5]
+  def self.section
+    0
   end
   
   def self.list(hash)
