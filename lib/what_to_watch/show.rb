@@ -3,7 +3,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   
   # WhatToWatch::BestMovies.add_shows
   # WhatToWatch::BestMovies.list()
-  # {netflix: "y", amazon_prime: "n", hbo_now: "y", hulu: "n", showtime: "y"}
+  # {netflix: "y", amazon_prime: "y", hbo_now: "y", hulu: "y", showtime: "y"}
   
   def initialize(title="", streaming_service="")
     @title = title 
@@ -24,6 +24,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
       end
     end
     services.compact!
+    services
   end
     
   
