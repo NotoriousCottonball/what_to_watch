@@ -21,10 +21,11 @@ class WhatToWatch::CLI
    puts ""
    puts "Welcome to What To Watch!"
    puts ""
-   which_streaming_services
   end 
    
   def start
+    while !exit?
+    which_streaming_services
     while !exit?
       main_commands
       while !exit?
@@ -103,6 +104,7 @@ class WhatToWatch::CLI
       end
       end
     end
+    end
     exit
   end
     
@@ -170,7 +172,8 @@ class WhatToWatch::CLI
     puts "Which Streaming Services do You Have Access To?"
     puts ""
     puts "Please Enter y or n to Answer each Question:"
-    
+    puts "(Exit: Type exit)"
+    puts ""
     puts "1. Do You have Netflix?"
     @input = gets.strip.downcase
     while !exit?
@@ -185,6 +188,7 @@ class WhatToWatch::CLI
     end
     end
     
+    return if exit?
     puts "2. Do You have Amazon Prime?"
     @input = gets.strip.downcase
     while !exit?
@@ -199,6 +203,7 @@ class WhatToWatch::CLI
     end
     end
     
+    return if exit?
     puts "3. Do You have HBO?"
     @input = gets.strip.downcase
     while !exit?
@@ -213,6 +218,7 @@ class WhatToWatch::CLI
     end
     end
     
+    return if exit?
     puts "4. Do You have HULU?"
     @input = gets.strip.downcase
     while !exit?
@@ -227,6 +233,7 @@ class WhatToWatch::CLI
     end
     end
     
+    return if exit?
     puts "5. Do You have Showtime?"
     @input = gets.strip.downcase
     while !exit?
