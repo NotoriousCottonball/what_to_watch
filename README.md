@@ -15,7 +15,7 @@ gem 'what_to_watch'
 
 ### And then execute:
 
-    $ bundle
+    $ bundle install
     
 
 ### Or install it yourself as:
