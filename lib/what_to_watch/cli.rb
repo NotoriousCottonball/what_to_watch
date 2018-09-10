@@ -26,6 +26,7 @@ class WhatToWatch::CLI
   def start
     while !exit?
     which_streaming_services
+    catch(:main_menu) do
     while !exit?
       main_commands
       while !exit?

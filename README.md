@@ -28,7 +28,7 @@ After installing from the command line, use the executable to run the applicatio
 
     $ what_to_watch
     
-Or, if requiring the Gem in your own application, start the CLI Controller.
+From within your own application's code, start the CLI Controller.
     
     $ WhatToWatch::CLI.new.start
 
