@@ -12,7 +12,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   end
   
   def self.add_shows
-    WhatToWatch::Scraper.scrape_vulture(self)
+    WhatToWatch::Scraper.scrape_vulture(self) if self.all == []
   end
   
   #Determine Display Based On User Input Recorded in CLI.streaming_services
@@ -45,7 +45,7 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
   
   def self.print_item(input)
     object = self.all[input.to_i-1]
-    WhatToWatch::Scraper.scrape_imdb(object)
+    WhatToWatch::Scraper.scrape_imdb(object) if object.url == nil
     puts ""
     puts "===================================="
     puts "     #{object.title.upcase}"

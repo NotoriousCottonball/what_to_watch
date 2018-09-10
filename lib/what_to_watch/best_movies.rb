@@ -6,10 +6,6 @@ class WhatToWatch::BestMovies < WhatToWatch::Show
     @@all 
   end
   
-  def self.reset! 
-    @@all = []
-  end
-  
   def self.section
     3
   end

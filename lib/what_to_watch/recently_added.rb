@@ -6,10 +6,6 @@ class WhatToWatch::RecentlyAdded < WhatToWatch::Show
     @@all 
   end
   
-  def self.reset! 
-    @@all = []
-  end
-  
   def self.section
     0
   end
