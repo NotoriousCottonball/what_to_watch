@@ -24,10 +24,9 @@ class WhatToWatch::CLI
   end 
    
   def start
-    while !exit?
     which_streaming_services
-    catch(:main_menu) do
     while !exit?
+      catch(:main_menu) do
       main_commands
       while !exit?
       case @input
@@ -44,8 +43,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
-            WhatToWatch::BestMovies.reset!
-            start
+            throw(:main_menu, WhatToWatch::BestMovies.reset!)
           else 
             invalid_command
           end
@@ -67,8 +65,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
-            WhatToWatch::BestTV.reset!
-            start
+            throw(:main_menu, WhatToWatch::BestTV.reset!)
           else 
             invalid_command
           end
@@ -90,8 +87,7 @@ class WhatToWatch::CLI
             options
             break
           elsif @input == "n"
-            WhatToWatch::RecentlyAdded.reset!
-            start
+            throw(:main_menu, WhatToWatch::RecentlyAdded.reset!)
           else 
             invalid_command
           end
@@ -104,7 +100,7 @@ class WhatToWatch::CLI
         invalid_command
       end
       end
-    end
+      end
     end
     exit
   end
