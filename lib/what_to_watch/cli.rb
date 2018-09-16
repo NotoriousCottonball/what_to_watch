@@ -103,6 +103,8 @@ class WhatToWatch::CLI
     end
     exit
   end
+  
+  private
     
   #CLI Dialogue Methods
   
@@ -111,9 +113,10 @@ class WhatToWatch::CLI
     puts "---------"
     puts "MAIN MENU:"
     puts "---------"
-    puts "1. Enter 1 to see the Best-Reviewed MOVIES you can stream now."
+    puts "1. Enter 1 to see Recently-Added MOVIES/TELEVISION you can stream now."
     puts "2. Enter 2 to see the Best-Reviewed TELEVISION you can stream now."
-    puts "3. Enter 3 to see Recently-Added MOVIES/TELEVISION you can stream now."
+    puts "3. Enter 3 to see the Best-Reviewed MOVIES you can stream now."
+    puts "4. Enter 4 to see Leaving-Soon MOVIES/TELEVISION you can stream now."
     puts ""
     puts "Exit: Type exit"
     puts "---------------"
@@ -242,6 +245,63 @@ class WhatToWatch::CLI
     else 
        invalid_command
     end
+    end
+  end
+  
+  #CLI Format Methods
+  
+  def format_services
+    services = @streaming_services.collect do |service, value| 
+      if value == "y" 
+        service.to_s.split('_').join(' ').capitalize
+      end
+    end
+    services.compact!
+    services
+  end
+  
+  #CLI Print Methods
+  
+  def self.list(hash)
+    puts ""
+    puts "======================"
+    puts " Best Reviewed Movies "
+    puts "======================"
+    puts ""
+    self.print_list(hash)
+  end
+  
+  def print_list
+    category = ""
+    case @input
+    when "1" 
+      category = "added"
+      banner = "Recently-Added/Coming-Soon"
+    when "2" 
+      category = "tv"
+      banner = "Best Reviewed Television"
+    when "3" 
+      category = "movies"
+      banner = "Best Reviewed Movies"
+    when "4" 
+      category = "expiring"
+      banner = "Leaving Soon"
+      
+    
+    
+    
+    
+    
+    WhatToWatch::Show.all.each.with_index(1) do |object, index|
+      if WhatToWatch::Show.which_services(hash).include?(object.streaming_service)
+        puts ""
+        puts "Available! #{index}. #{object.title.upcase}. Watch Now on #{object.streaming_service}."
+        puts ""
+      else
+        puts ""
+        puts "Sorry..... #{index}. #{object.title.upcase}. Only on #{object.streaming_service}."
+        puts ""
+      end
     end
   end
   

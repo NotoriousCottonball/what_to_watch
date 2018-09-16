@@ -12,51 +12,19 @@ attr_accessor :title, :streaming_service, :category, :url, :description, :genre_
     @title = title 
     @streaming_service = streaming_service
     @category = category
-    self.all << self
+    @@all << self
   end
   
   def self.all 
     @@all 
   end
   
-  def self.add_shows
-    WhatToWatch::Scraper.scrape_vulture
-  end
   
   #Determine Display Based On User Input Recorded in CLI.streaming_services
   
-  def self.services(hash)
-    services = hash.collect do |service, value| 
-      if value == "y" 
-        service.to_s.split('_').join(' ').capitalize
-      end
-    end
-    services.compact!
-    services
-  end
-    
-  def self.list(hash)
-    puts ""
-    puts "======================"
-    puts " Best Reviewed Movies "
-    puts "======================"
-    puts ""
-    self.print_list(hash)
-  end
   
-  def self.print_list(hash)
-    self.all.each.with_index(1) do |object, index|
-      if self.services(hash).include?(object.streaming_service)
-        puts ""
-        puts "Available! #{index}. #{object.title.upcase}. Watch Now on #{object.streaming_service}."
-        puts ""
-      else
-        puts ""
-        puts "Sorry..... #{index}. #{object.title.upcase}. Only on #{object.streaming_service}."
-        puts ""
-      end
-    end
-  end
+    
+  
   
   
   def self.print_item(input)

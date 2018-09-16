@@ -6,10 +6,10 @@ class WhatToWatch::Scraper
     doc.css("div[data-editable='main']").each do |section|
       section.css("div.column-item").each do |row|
         row.css("section").drop(1).each do |item|
-          model.new(
+          WhatToWatch::Show.new(
             item.css("div[itemprop='caption']").text.split("\n")[1].strip.gsub("  ", " "),
             row.css("section")[0].css("h3").text.strip.capitalize,
-            section.css("h2.clay-subheader").text.strip.capitalize
+            section.css("h2.clay-subheader").text.strip.downcase
           )
         end
       end 
