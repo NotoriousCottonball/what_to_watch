@@ -111,7 +111,6 @@ private
     puts "I'm sorry, I don't recognize that Command."
     puts "Please Try Again"
     puts ""
-    @input = gets.strip.downcase
   end
   
   def exit 
@@ -236,19 +235,19 @@ private
       banner = "Leaving Soon"
     end 
     puts ""
-    puts "======================"
+    puts "============================"
     puts " #{banner} "
-    puts "======================"
+    puts "============================"
     puts ""
     WhatToWatch::Show.filter(category)
     WhatToWatch::Show.filtered.each.with_index(1) do |recommendation, index|
-      if self.format_services.include?(recommendation.streaming_service)
+      if format_services.include?(recommendation.streaming_service)
         puts ""
-        puts "Available! #{index}. #{recommendation.title.upcase}. Watch Now on #{recommendation.streaming_service}."
+        puts "Available! #{index}. #{recommendation.title.upcase}. Watch Now on #{recommendation.streaming_service.capitalize}."
         puts ""
       else
         puts ""
-        puts "Sorry..... #{index}. #{recommendation.title.upcase}. Only on #{recommendation.streaming_service}."
+        puts "Sorry..... #{index}. #{recommendation.title.upcase}. Only on #{recommendation.streaming_service.capitalize}."
         puts ""
       end
     end
