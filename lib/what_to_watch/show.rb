@@ -6,6 +6,7 @@ attr_accessor :title, :streaming_service, :category, :url, :description, :genre_
   # {netflix: "y", amazon_prime: "y", hbo_now: "y", hulu: "y", showtime: "y"}
   
   @@all = []
+  @@filtered = []
   
   
   def initialize(title="", streaming_service="", category= "")
@@ -15,21 +16,18 @@ attr_accessor :title, :streaming_service, :category, :url, :description, :genre_
     @@all << self
   end
   
-  def self.all 
-    @@all 
+  def self.filter
+    @@filtered = @@all.select{|object| object.category.include?("#{category}")}
+  end
+  
+  def self.filtered
+    @@filtered
   end
   
   
-  #Determine Display Based On User Input Recorded in CLI.streaming_services
-  
-  
-    
-  
-  
-  
-  def self.print_item(input)
-    object = self.all[input.to_i-1]
-    WhatToWatch::Scraper.scrape_imdb(object) if object.url == nil
+  def print_item
+    item = WhatToWatch::Show.filtered[input.to_i-1]
+    WhatToWatch::Scraper.scrape_imdb(item) if item.url == nil
     puts ""
     puts "===================================="
     puts "     #{object.title.upcase}"

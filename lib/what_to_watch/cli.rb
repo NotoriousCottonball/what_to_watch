@@ -262,17 +262,9 @@ class WhatToWatch::CLI
   
   #CLI Print Methods
   
-  def self.list(hash)
-    puts ""
-    puts "======================"
-    puts " Best Reviewed Movies "
-    puts "======================"
-    puts ""
-    self.print_list(hash)
-  end
-  
   def print_list
     category = ""
+    banner = ""
     case @input
     when "1" 
       category = "added"
@@ -286,20 +278,21 @@ class WhatToWatch::CLI
     when "4" 
       category = "expiring"
       banner = "Leaving Soon"
-      
-    
-    
-    
-    
-    
-    WhatToWatch::Show.all.each.with_index(1) do |object, index|
-      if WhatToWatch::Show.which_services(hash).include?(object.streaming_service)
+    end 
+    puts ""
+    puts "======================"
+    puts " #{banner} "
+    puts "======================"
+    puts ""
+    WhatToWatch::Show.filter(category)
+    WhatToWatch::Show.filtered.each.with_index(1) do |recommendation, index|
+      if self.format_services.include?(recommendation.streaming_service)
         puts ""
-        puts "Available! #{index}. #{object.title.upcase}. Watch Now on #{object.streaming_service}."
+        puts "Available! #{index}. #{recommendation.title.upcase}. Watch Now on #{recommendation.streaming_service}."
         puts ""
       else
         puts ""
-        puts "Sorry..... #{index}. #{object.title.upcase}. Only on #{object.streaming_service}."
+        puts "Sorry..... #{index}. #{recommendation.title.upcase}. Only on #{recommendation.streaming_service}."
         puts ""
       end
     end
