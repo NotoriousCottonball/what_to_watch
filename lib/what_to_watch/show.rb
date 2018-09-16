@@ -1,14 +1,22 @@
 class WhatToWatch::Show
-attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
+attr_accessor :title, :streaming_service, :category, :url, :description, :genre_year, :cast
   
   # WhatToWatch::BestMovies.add_shows
   # WhatToWatch::BestMovies.list()
   # {netflix: "y", amazon_prime: "y", hbo_now: "y", hulu: "y", showtime: "y"}
   
-  def initialize(title="", streaming_service="")
+  @@all = []
+  
+  
+  def initialize(title="", streaming_service="", category= "")
     @title = title 
     @streaming_service = streaming_service
-    self.class.all << self
+    @category = category
+    self.all << self
+  end
+  
+  def self.all 
+    @@all 
   end
   
   def self.add_shows
@@ -27,6 +35,14 @@ attr_accessor :title, :streaming_service, :url, :description, :genre_year, :cast
     services
   end
     
+  def self.list(hash)
+    puts ""
+    puts "======================"
+    puts " Best Reviewed Movies "
+    puts "======================"
+    puts ""
+    self.print_list(hash)
+  end
   
   def self.print_list(hash)
     self.all.each.with_index(1) do |object, index|

@@ -1,5 +1,4 @@
 class WhatToWatch::CLI 
-  attr_accessor :input, :streaming_services
   
   def initialize 
    @input = ""
