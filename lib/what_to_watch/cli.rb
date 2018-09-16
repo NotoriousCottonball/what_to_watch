@@ -24,88 +24,43 @@ class WhatToWatch::CLI
    
   def start
     which_streaming_services
+    WhatToWatch::Scraper.scrape_vulture
     while !exit?
       catch(:main_menu) do
-      main_commands
-      while !exit?
-      case @input
-      when "1"
-        WhatToWatch::BestMovies.add_shows
-        WhatToWatch::BestMovies.list(@streaming_services)
-        options
-        while !exit?
-        if valid_number?(WhatToWatch::BestMovies.all)
-          WhatToWatch::BestMovies.print_item(@input)
-          item_options
+        main_commands
+        case @input
+        when "1", "2", "3", "4"
+          print_list
           while !exit?
-          if @input == "y"
             options
-            break
-          elsif @input == "n"
-            throw(:main_menu)
-          else 
-            invalid_command
-          end
+            if valid_number?(WhatToWatch::Show.filtered)
+              print_item
+              while !exit?
+              item_options
+                if @input == "y"
+                  break
+                elsif @input == "n"
+                  throw(:main_menu)
+                else 
+                invalid_command
+                end
+              end
+            else
+              invalid_command
+            end
           end
         else
-           invalid_command
+          invalid_command
         end
-        end
-      when "2"
-        WhatToWatch::BestTV.add_shows
-        WhatToWatch::BestTV.list(@streaming_services)
-        options
-        while !exit?
-        if valid_number?(WhatToWatch::BestTV.all)
-          WhatToWatch::BestTV.print_item(@input)
-          item_options
-          while !exit?
-          if @input == "y"
-            options
-            break
-          elsif @input == "n"
-            throw(:main_menu)
-          else 
-            invalid_command
-          end
-          end
-        else
-           invalid_command
-        end
-        end
-      when "3"
-        WhatToWatch::RecentlyAdded.add_shows
-        WhatToWatch::RecentlyAdded.list(@streaming_services)
-        options
-        while !exit?
-        if valid_number?(WhatToWatch::RecentlyAdded.all)
-          WhatToWatch::RecentlyAdded.print_item(@input)
-          item_options
-          while !exit?
-          if @input == "y"
-            options
-            break
-          elsif @input == "n"
-            throw(:main_menu)
-          else 
-            invalid_command
-          end
-          end
-        else
-           invalid_command
-        end
-        end
-      else
-        invalid_command
-      end
-      end
       end
     end
     exit
   end
-  
-  private
+
+
+private
     
+  
   #CLI Dialogue Methods
   
   def main_commands
@@ -164,6 +119,7 @@ class WhatToWatch::CLI
     puts "**********************************************************"
     puts "See You Next Time for More Great Movie/TV Recommendations!"
     puts "**********************************************************"
+    puts ""
   end
   
   def which_streaming_services
@@ -299,26 +255,26 @@ class WhatToWatch::CLI
   end
   
    def print_item
-    item = WhatToWatch::Show.filtered[input.to_i-1]
+    item = WhatToWatch::Show.filtered[@input.to_i-1]
     WhatToWatch::Scraper.scrape_imdb(item) if item.url == nil
     puts ""
     puts "===================================="
-    puts "     #{object.title.upcase}"
+    puts "     #{item.title.upcase}"
     puts "===================================="
-    puts "#{object.genre_year}"
+    puts "#{item.genre_year}"
     puts ""
-    puts "*** Available on #{object.streaming_service.upcase} ***"
+    puts "*** Available on #{item.streaming_service.upcase} ***"
     puts ""
-    object.cast.each{|role, people| puts "#{role} #{people}"}
+    item.cast.each{|role, people| puts "#{role} #{people}"}
     puts ""
     puts "---Description---"
     puts ""
-    puts "#{object.description}"
+    puts "#{item.description}"
     puts "[...]"
     puts ""
     puts "For more information"
     puts ""
-    puts "===>  #{object.url}"
+    puts "===>  #{item.url}"
   end
   
   #CLI Logic Methods
