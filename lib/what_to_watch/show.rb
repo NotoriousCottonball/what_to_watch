@@ -16,36 +16,13 @@ attr_accessor :title, :streaming_service, :category, :url, :description, :genre_
     @@all << self
   end
   
-  def self.filter
-    @@filtered = @@all.select{|object| object.category.include?("#{category}")}
+  def self.filter(selection)
+    @@filtered = @@all.select{|object| object.category.include?("#{selection}")}
   end
   
   def self.filtered
     @@filtered
   end
   
-  
-  def print_item
-    item = WhatToWatch::Show.filtered[input.to_i-1]
-    WhatToWatch::Scraper.scrape_imdb(item) if item.url == nil
-    puts ""
-    puts "===================================="
-    puts "     #{object.title.upcase}"
-    puts "===================================="
-    puts "#{object.genre_year}"
-    puts ""
-    puts "*** Available on #{object.streaming_service.upcase} ***"
-    puts ""
-    object.cast.each{|role, people| puts "#{role} #{people}"}
-    puts ""
-    puts "---Description---"
-    puts ""
-    puts "#{object.description}"
-    puts "[...]"
-    puts ""
-    puts "For more information"
-    puts ""
-    puts "===>  #{object.url}"
-  end
   
 end
