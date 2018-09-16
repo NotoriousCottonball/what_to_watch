@@ -1,7 +1,7 @@
 class WhatToWatch::Scraper
  
  
- def self.scrape_vulture(model)
+ def self.scrape_vulture
     doc = Nokogiri::HTML(open("http://vulture.com/streaming"))
     doc.css("div[data-editable='main']").each do |section|
       section.css("div.column-item").each do |row|

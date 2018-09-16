@@ -20,7 +20,7 @@ attr_accessor :title, :streaming_service, :category, :url, :description, :genre_
   end
   
   def self.add_shows
-    WhatToWatch::Scraper.scrape_vulture(self) if self.all == []
+    WhatToWatch::Scraper.scrape_vulture
   end
   
   #Determine Display Based On User Input Recorded in CLI.streaming_services
