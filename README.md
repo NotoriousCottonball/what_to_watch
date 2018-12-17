@@ -3,7 +3,7 @@
 
 This Ruby Gem provides a CLI to view Highest Rated/Recently Added Movies and Television according to Vulture.com Streaming Recommendations, and provides additional details on the user's selection according to IMDB.com. 
 The Gem asks which popular streaming services the user has access to and whether the user wants recommendations for Highest Reviewed Films, Highest Reviewed Television, or Most Recent Additions. 
-The Gem returns a filtered list of recommendatons from Vulture.com and then further details/information from IMDB.com upon user request. 
+The Gem returns a filtered list of recommendations from Vulture.com and then further details/information from IMDB.com upon user request. 
 
 ## Installation
 
