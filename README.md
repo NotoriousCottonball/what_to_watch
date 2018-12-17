@@ -13,7 +13,7 @@ The Gem returns a filtered list of recommendations from Vulture.com and then fur
 gem 'what_to_watch'
 ```
 
-### And then execute:
+### And then execute
 
     $ bundle install
     
